@@ -1,0 +1,2291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mario Kart Tour: Brazil Tour(2027) — Acelera no Ritmo dos Brasileiro pela Inspíração do Rio De Janeiro... !</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #00C853;
+    --amarelo: #FFD600;
+    --azul: #0057B7;
+    --rosa: #FF2D78;
+    --laranja: #FF6D00;
+    --roxo: #7B2FBE;
+    --branco: #FFFFFF;
+    --preto: #0A0A0A;
+    --bg-dark: #080B14;
+    --card-bg: #0F1525;
+    --neon-glow: 0 0 20px rgba(255, 214, 0, 0.6);
+    --pink-glow: 0 0 20px rgba(255, 45, 120, 0.7);
+    --green-glow: 0 0 20px rgba(0, 200, 83, 0.6);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg-dark);
+    color: var(--branco);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--amarelo);
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, background 0.2s;
+    box-shadow: 0 0 12px var(--amarelo);
+  }
+  .cursor-ring {
+    width: 40px; height: 40px;
+    border: 2px solid rgba(255, 214, 0, 0.4);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.15s ease;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--preto); }
+  ::-webkit-scrollbar-thumb { background: var(--amarelo); border-radius: 3px; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; width: 100%;
+    z-index: 1000;
+    background: rgba(8, 11, 20, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 2px solid rgba(255, 214, 0, 0.2);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+
+  .logo {
+    font-family: 'Bangers', cursive;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, var(--amarelo), var(--verde), var(--azul));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    filter: drop-shadow(0 0 8px rgba(255,214,0,0.5));
+  }
+
+  .logo span { color: var(--rosa); -webkit-text-fill-color: var(--rosa); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s, text-shadow 0.2s;
+  }
+  .nav-links a:hover {
+    color: var(--amarelo);
+    text-shadow: 0 0 12px var(--amarelo);
+  }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--rosa), var(--laranja));
+    color: white !important;
+    padding: 0.5rem 1.4rem;
+    border-radius: 50px;
+    font-weight: 900 !important;
+    box-shadow: 0 4px 20px rgba(255, 45, 120, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+  .nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 45, 120, 0.7) !important;
+    color: white !important;
+  }
+
+  /* HERO */
+  #home {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding-top: 70px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(0, 200, 83, 0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(255, 45, 120, 0.2) 0%, transparent 55%),
+      radial-gradient(ellipse at 60% 80%, rgba(0, 87, 183, 0.2) 0%, transparent 50%),
+      var(--bg-dark);
+    z-index: 0;
+  }
+
+  /* Carnival confetti animation */
+  .confetti-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    opacity: 0;
+    animation: confettiFall linear infinite;
+  }
+
+  @keyframes confettiFall {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  .road-lines {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    background:
+      linear-gradient(transparent 0%, rgba(255,214,0,0.05) 100%);
+    overflow: hidden;
+  }
+
+  .road-line {
+    position: absolute;
+    bottom: 20px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--amarelo), transparent);
+    animation: roadMove 2s linear infinite;
+  }
+
+  @keyframes roadMove {
+    0% { transform: translateX(-100%); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateX(200%); opacity: 0; }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 2rem;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 45, 120, 0.15);
+    border: 1px solid rgba(255, 45, 120, 0.5);
+    color: var(--rosa);
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(255,45,120,0.3); }
+    50% { box-shadow: 0 0 25px rgba(255,45,120,0.7); }
+  }
+
+  .hero-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(5rem, 15vw, 11rem);
+    line-height: 0.9;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+    animation: heroReveal 1s ease-out forwards;
+  }
+
+  @keyframes heroReveal {
+    0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .title-rio {
+    display: block;
+    background: linear-gradient(90deg, var(--verde), var(--amarelo));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 20px rgba(255, 214, 0, 0.4));
+  }
+
+  .title-kart {
+    display: block;
+    color: white;
+    text-shadow:
+      4px 4px 0px var(--rosa),
+      8px 8px 0px rgba(255, 45, 120, 0.3);
+  }
+
+  .hero-sub {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    animation: heroReveal 1s ease-out 0.2s both;
+  }
+
+  .hero-sub em {
+    color: var(--amarelo);
+    font-style: normal;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: heroReveal 1s ease-out 0.4s both;
+  }
+
+  .btn-primary {
+    font-family: 'Bangers', cursive;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    padding: 1rem 2.8rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--amarelo), var(--laranja));
+    color: var(--preto);
+    box-shadow: 0 6px 30px rgba(255, 214, 0, 0.5), 0 0 0 3px rgba(255,214,0,0.2);
+    transition: all 0.25s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 12px 40px rgba(255, 214, 0, 0.7), 0 0 0 4px rgba(255,214,0,0.3);
+  }
+
+  .btn-secondary {
+    font-family: 'Bangers', cursive;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    padding: 1rem 2.8rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    background: rgba(255,255,255,0.07);
+    color: white;
+    backdrop-filter: blur(10px);
+    transition: all 0.25s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-4px);
+    border-color: var(--rosa);
+    background: rgba(255,45,120,0.12);
+    box-shadow: 0 8px 30px rgba(255,45,120,0.3);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin-top: 4rem;
+    animation: heroReveal 1s ease-out 0.6s both;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Bangers', cursive;
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+    color: var(--amarelo);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s ease-in-out infinite;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  .scroll-arrow {
+    width: 24px;
+    height: 24px;
+    border-right: 2px solid rgba(255,255,255,0.4);
+    border-bottom: 2px solid rgba(255,255,255,0.4);
+    transform: rotate(45deg);
+  }
+
+  /* FLOATING KART */
+  .kart-float {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    animation: kartFloat 3s ease-in-out infinite;
+    display: none;
+  }
+
+  @keyframes kartFloat {
+    0%, 100% { transform: translateY(-50%) rotate(-2deg); }
+    50% { transform: translateY(calc(-50% - 15px)) rotate(2deg); }
+  }
+
+  .kart-svg {
+    width: 320px;
+    filter: drop-shadow(0 20px 40px rgba(255, 214, 0, 0.4));
+  }
+
+  /* SECTIONS GENERAL */
+  section {
+    padding: 100px 5%;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-desc {
+    max-width: 600px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* ABOUT */
+  #sobre {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .city-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .city-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--verde), var(--amarelo), var(--rosa));
+  }
+
+  .city-illustration {
+    width: 100%;
+    height: 280px;
+    position: relative;
+  }
+
+  /* Rio skyline SVG styles */
+  .skyline-sky {
+    fill: #0D1B3E;
+  }
+
+  .about-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .feature-chip {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.3s;
+  }
+
+  .feature-chip:hover {
+    background: rgba(255, 214, 0, 0.08);
+    border-color: rgba(255, 214, 0, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .feature-chip .icon {
+    font-size: 1.4rem;
+  }
+
+  .about-text .section-label { color: var(--verde); }
+
+  /* CHARACTERS */
+  #personagens {
+    background: linear-gradient(180deg, var(--bg-dark) 0%, #0A1020 50%, var(--bg-dark) 100%);
+    position: relative;
+  }
+
+  #personagens::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rosa), var(--amarelo), var(--verde), transparent);
+  }
+
+  .chars-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .chars-header .section-label { color: var(--rosa); }
+
+  .chars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .char-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+  }
+
+  .char-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    border-color: var(--card-accent, rgba(255,214,0,0.4));
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px var(--char-glow, rgba(255,214,0,0.2));
+  }
+
+  .char-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 3px;
+    background: var(--char-color, var(--amarelo));
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s;
+  }
+
+  .char-card:hover::after { transform: scaleX(1); }
+
+  .char-art {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .char-emoji {
+    font-size: 7rem;
+    animation: charIdle 3s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes charIdle {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+  }
+
+  .char-bg-glow {
+    position: absolute;
+    inset: 0;
+    opacity: 0.15;
+    transition: opacity 0.3s;
+  }
+  .char-card:hover .char-bg-glow { opacity: 0.3; }
+
+  .char-info {
+    padding: 1.5rem;
+  }
+
+  .char-name {
+    font-family: 'Bangers', cursive;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+  }
+
+  .char-role {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    opacity: 0.7;
+  }
+
+  .char-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 1rem;
+  }
+
+  .char-stats-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .stat-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .stat-row span:first-child {
+    width: 60px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .stat-fill-bg {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .stat-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--char-color, var(--amarelo));
+    transition: width 0.8s ease;
+    width: 0%;
+  }
+
+  /* TRACKS */
+  #pistas {
+    position: relative;
+  }
+
+  .tracks-header .section-label { color: var(--azul); }
+
+  .tracks-scroll {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 2rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--amarelo) transparent;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  .track-card {
+    min-width: 320px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .track-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+
+  .track-visual {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .track-icon {
+    font-size: 5rem;
+    z-index: 1;
+    position: relative;
+    animation: kartFloat 4s ease-in-out infinite;
+  }
+
+  .track-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.8;
+  }
+
+  .track-difficulty {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0,0,0,0.6);
+    border-radius: 50px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .track-cups {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 0.2rem;
+    z-index: 2;
+  }
+
+  .cup { font-size: 1rem; }
+
+  .track-info {
+    padding: 1.5rem;
+  }
+
+  .track-name {
+    font-family: 'Bangers', cursive;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+  }
+
+  .track-location {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.8rem;
+  }
+
+  .track-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .track-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50px;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* GAMEPLAY */
+  #gameplay {
+    background: radial-gradient(ellipse at center, #0F1A35 0%, var(--bg-dark) 70%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gameplay-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .gameplay-header .section-label { color: var(--laranja); }
+
+  .gameplay-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .gf-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    padding: 1.2rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid var(--item-color, var(--amarelo));
+    border-radius: 12px;
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  .gf-item:hover {
+    background: rgba(255,255,255,0.07);
+    transform: translateX(6px);
+  }
+
+  .gf-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .gf-text h3 {
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .gf-text p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+
+  /* SCREEN MOCKUP */
+  .phone-mockup {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  .phone-frame {
+    width: 260px;
+    background: #111;
+    border-radius: 40px;
+    border: 6px solid #222;
+    box-shadow:
+      0 40px 80px rgba(0,0,0,0.6),
+      0 0 0 1px rgba(255,255,255,0.07),
+      inset 0 0 0 1px rgba(255,255,255,0.04);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .phone-screen {
+    width: 100%;
+    aspect-ratio: 9/19;
+    background: var(--bg-dark);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .phone-notch {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 80px; height: 20px;
+    background: #111;
+    border-radius: 0 0 14px 14px;
+    z-index: 10;
+  }
+
+  .game-screen-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(180deg, #0D2137 0%, #1A3D5C 40%, #2C5F3C 80%, #1A3D1A 100%);
+    overflow: hidden;
+  }
+
+  .game-road {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45%;
+    background: linear-gradient(180deg, #555 0%, #444 100%);
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  }
+
+  .game-road-line {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 15%;
+    background: var(--amarelo);
+    border-radius: 3px;
+    animation: roadPulse 0.8s ease-in-out infinite;
+  }
+
+  @keyframes roadPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .game-kart-icon {
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    animation: gameKartBounce 0.5s ease-in-out infinite;
+    z-index: 3;
+  }
+
+  @keyframes gameKartBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-3px); }
+  }
+
+  .game-position-badge {
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 10px;
+    padding: 0.5rem 0.8rem;
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    color: var(--amarelo);
+    z-index: 5;
+  }
+
+  .game-score {
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 10px;
+    padding: 0.5rem 0.8rem;
+    font-weight: 900;
+    font-size: 0.7rem;
+    color: white;
+    z-index: 5;
+    text-align: right;
+  }
+
+  .game-items-bar {
+    position: absolute;
+    bottom: 10px;
+    width: 90%;
+    left: 5%;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    z-index: 5;
+  }
+
+  .item-slot {
+    width: 36px; height: 36px;
+    background: rgba(0,0,0,0.8);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    animation: itemGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes itemGlow {
+    0%, 100% { border-color: rgba(255,255,255,0.2); }
+    50% { border-color: var(--amarelo); box-shadow: 0 0 8px var(--amarelo); }
+  }
+
+  .mountains-bg {
+    position: absolute;
+    bottom: 42%;
+    width: 100%;
+    opacity: 0.6;
+  }
+
+  .christ-silhouette {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    opacity: 0.4;
+    z-index: 1;
+  }
+
+  .speed-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .speed-line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: speedMove 0.6s linear infinite;
+  }
+
+  @keyframes speedMove {
+    0% { transform: translateX(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(200%); opacity: 0; }
+  }
+
+  /* DLC */
+  #dlc {
+    background: linear-gradient(135deg, #0A0B14 0%, #0F0820 50%, #0A0B14 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #dlc::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(123, 47, 190, 0.12) 0%, transparent 60%);
+    animation: rotateGlow 20s linear infinite;
+  }
+
+  @keyframes rotateGlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .dlc-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .dlc-header .section-label { color: var(--roxo); }
+
+  .dlc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .dlc-card {
+    background: rgba(123, 47, 190, 0.08);
+    border: 1px solid rgba(123, 47, 190, 0.25);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s;
+    cursor: pointer;
+  }
+
+  .dlc-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(30%, -30%);
+  }
+
+  .dlc-card:hover {
+    background: rgba(123, 47, 190, 0.15);
+    border-color: rgba(123, 47, 190, 0.5);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(123, 47, 190, 0.25);
+  }
+
+  .dlc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .dlc-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .dlc-name {
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+
+  .dlc-desc {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 1.5rem;
+  }
+
+  .dlc-contents {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .dlc-content-item {
+    background: rgba(123, 47, 190, 0.2);
+    border: 1px solid rgba(123, 47, 190, 0.3);
+    border-radius: 8px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .dlc-price {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .price-tag {
+    font-family: 'Bangers', cursive;
+    font-size: 1.8rem;
+    color: var(--amarelo);
+    letter-spacing: 1px;
+  }
+
+  .price-tag .free { color: var(--verde); }
+
+  .btn-dlc {
+    background: linear-gradient(135deg, var(--roxo), #B44FFF);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    letter-spacing: 1px;
+  }
+
+  .btn-dlc:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(123, 47, 190, 0.5);
+  }
+
+  /* CONTACT */
+  #contato {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .contact-bg-decoration {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(0, 200, 83, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 50%, rgba(255, 45, 120, 0.08) 0%, transparent 50%);
+  }
+
+  .contact-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .contact-content .section-label { color: var(--verde); margin: 0 auto 1rem; display: block; }
+
+  .contact-form {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 3rem;
+    margin-top: 3rem;
+    text-align: left;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 0.9rem 1.2rem;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--amarelo);
+    box-shadow: 0 0 0 3px rgba(255, 214, 0, 0.12);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-group select option {
+    background: #1a1a2e;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 1rem;
+    font-family: 'Bangers', cursive;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--verde), var(--azul));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 6px 25px rgba(0, 200, 83, 0.3);
+  }
+
+  .form-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 200, 83, 0.5);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #050709;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 4rem 5% 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand .logo {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .footer-desc {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-col h4 {
+    font-weight: 900;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-col ul li a {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul li a:hover { color: var(--amarelo); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-link {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+
+  .social-link:hover {
+    background: rgba(255, 214, 0, 0.12);
+    border-color: rgba(255, 214, 0, 0.4);
+    transform: translateY(-3px);
+  }
+
+  /* RATINGS BAR */
+  .ratings-section {
+    background: var(--card-bg);
+    padding: 3rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .rating-item {
+    text-align: center;
+  }
+
+  .rating-stars {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+
+  .rating-score {
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    color: var(--amarelo);
+    display: block;
+  }
+
+  .rating-source {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .rating-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* ITEMS CAROUSEL */
+  .items-section {
+    padding: 5rem 5%;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(180deg, transparent, rgba(255, 109, 0, 0.05), transparent);
+  }
+
+  .items-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .items-header .section-label { color: var(--laranja); }
+
+  .items-scroll-container {
+    display: flex;
+    gap: 1.5rem;
+    animation: scrollItems 20s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes scrollItems {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .item-block {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 1.5rem;
+    min-width: 150px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .item-emoji {
+    font-size: 2.5rem;
+  }
+
+  .item-name {
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* MARQUEE */
+  .marquee-bar {
+    background: var(--amarelo);
+    padding: 0.8rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-content {
+    display: inline-flex;
+    animation: marqueeMove 15s linear infinite;
+    gap: 3rem;
+  }
+
+  @keyframes marqueeMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .marquee-item {
+    font-family: 'Bangers', cursive;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: var(--preto);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    white-space: nowrap;
+  }
+
+  /* REVEAL ANIMATION */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .about-grid, .gameplay-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .rating-divider { display: none; }
+    .kart-float { display: none; }
+    .hero-title { font-size: clamp(4rem, 18vw, 8rem); }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 70px 5%; }
+    .hero-stats { gap: 2rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .chars-grid { grid-template-columns: 1fr; }
+    .dlc-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Rio<span>Kart</span>🏁</div>
+  <ul class="nav-links">
+    <li><a href="#home">Início</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#personagens">Personagens</a></li>
+    <li><a href="#pistas">Pistas</a></li>
+    <li><a href="#gameplay">Gameplay</a></li>
+    <li><a href="#dlc">DLCs</a></li>
+    <li><a href="#contato" class="nav-cta">Jogar Agora</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">🇧🇷 Disponível Agora no App Store & Google Play</div>
+    <h1 class="hero-title">
+      <span class="title-Mario Kart:">Mario Kart</span>
+      <span class="title-kart">Brazil Tour (2027)</span>
+    </h1>
+    <p class="hero-sub">
+      A corrida mais <em>calorosa</em>, <em>vibrante</em> e <em>brasileira</em> que você já viu.<br>
+      Acelera no ritmo dos Brasileiros pela Inspríranção pelo Rio de Janeiro...
+    </p>
+    <div class="hero-buttons">
+      <a href="#gameplay" class="btn-primary">🎮 Jogue que da no "Play"!...</a>
+      <a href="#sobre" class="btn-secondary">Saiba Mais ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">12+</span>
+        <span class="stat-label">Pistas Únicas</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">8</span>
+        <span class="stat-label">Personagens</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">5M+</span>
+        <span class="stat-label">Downloads</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">4.8★</span>
+        <span class="stat-label">Avaliação</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="road-lines">
+    <div class="road-line" style="width:40%; left:10%; animation-delay: 0s; bottom: 30px;"></div>
+    <div class="road-line" style="width:30%; left:30%; animation-delay: 0.7s; bottom: 50px;"></div>
+    <div class="road-line" style="width:50%; left:5%; animation-delay: 1.4s; bottom: 70px;"></div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-arrow"></div>
+    Role para baixo
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-content" id="marqueeContent">
+    <!-- duplicated for infinite scroll -->
+    <span class="marquee-item">🏁 NOVA PISTA: Rio Carníval</span>
+    <span class="marquee-item">🛞 KARTS EXCLUSIVOS DO Aplícativo "Mario Kart Tour"</span>
+    <span class="marquee-item">🎉 TEMPORADA Brazil Tour que está em DISPONÍVEL</span>
+    <span class="marquee-item">⚡ ITENS ESpecíficos: Todos os Itens de Seriados do MArio Kart!...</span>
+    <span class="marquee-item">🏆 COPA RIO 2027 Está EM ANDAMENTO</span>
+    <span class="marquee-item">🌊 Outras Pístas é bem específicas como Piranha Plant Pipeline,Los Angeles Laps 1 & Sdyney Sprínt(Challenge-Tíme Attack)</span>
+    <span class="marquee-item">🏁 NOVA PISTA: Rio Carníval</span>
+    <span class="marquee-item">🛞 KARTS EXCLUSIVOS DO Aplícativo "Mario Kart Tour"</span>
+    <span class="marquee-item">🎉 TEMPORADA  Brazil Tour que está em DISPONÍVEL</span>
+    <span class="marquee-item">⚡ ITENS ESPECIAIS: Todos os Itens de Seriados do MArio Kart!...</span>
+    <span class="marquee-item">🏆 COPA RIO 027 Está EM ANDAMENTO</span>
+    <span class="marquee-item">🌊 Outras Pístas é bem específicas como Piranha Plant Pipeline,Los Angeles Laps 1 & Sdyney Sprínt(Challenge-Tíme Attack)</span>
+  </div>
+</div>
+
+<!-- RATINGS -->
+<div class="ratings-section reveal">
+  <div class="rating-item">
+    <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+    <span class="rating-score">4.9</span>
+    <span class="rating-source">App Store</span>
+  </div>
+  <div class="rating-divider"></div>
+  <div class="rating-item">
+    <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+    <span class="rating-score">4.8</span>
+    <span class="rating-source">Google Play</span>
+  </div>
+  <div class="rating-divider"></div>
+  <div class="rating-item">
+    <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+    <span class="rating-score">9.2</span>
+    <span class="rating-source">IGN Brasil</span>
+  </div>
+  <div class="rating-divider"></div>
+  <div class="rating-item">
+    <span class="rating-stars">🏅🏅🏅🏅</span>
+    <span class="rating-score">Top #1</span>
+    <span class="rating-source">Jogos Mobile</span>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <span class="section-label" style="color: var(--verde);">🌿 Sobre o Jogo</span>
+      <h2 class="section-title">O Brasil que Nunca Correu Tão Rápido pelo "Mario Kart Tour".(Ou seja,Los Angeles Laps + Sdyney Sprínt)</h2>
+      <p class="section-desc">
+        Mario Kart tour  é um jogo eletrônico produzido pela Nintendo EPD e publicado pela Nintendo para Dispositivos Móvel com o sistema operacional Android e iOS em Setembro de 2019, sendo free-to-play. O jogo atualmente está disponível nas lojas de aplicativos Google Play e App Store. e críe desses personagens que inspiram na cultura carioca e use itens especiais inspirados na magia do carnaval.
+      </p>
+      <p class="section-desc" style="margin-top: 1rem;">
+        Do Cristo Redentor às praias de Copacabana, de Ipanema ao Maracanã e arco da Lapa... — cada pista é uma homenagem vibrante à maior cidade do coração brasileiro.
+      </p>
+      <div class="about-features">
+        <div class="feature-chip"><span class="icon">🏖️</span> Cenários Reais sobre Mapa do Rio</div>
+        <div class="feature-chip"><span class="icon">🎭</span> Carnaval Interativo de Sambodromo!...</div>
+        <div class="feature-chip"><span class="icon">🛞</span> Karts Personalizados & Planadores dessa Cultura Brasileira?</div>
+        <div class="feature-chip"><span class="icon">⚡</span> Itens Específicos de Mario Kart Tour</div>
+        <div class="feature-chip"><span class="icon">🌐</span> Multiplayer Online</div>
+        <div class="feature-chip"><span class="icon">🏆</span> Copas Semanais(de 10/02 Até 16/02 desse ano,Por exemplo 2027 ou 2028)</div>
+        <div class="feature-chip"><span class="icon">🎵</span> Trilha de Samba, Funk Carioca e Bossa Nova?...</div>
+        <div class="feature-chip"><span class="icon">📱</span> iOS & Android</div>
+      </div>
+    </div>
+    <div class="about-visual reveal">
+      <div class="city-card">
+        <!--Rio Carníval -->
+        
+		<img src = "img/Rio-de-Janeiro.png" height = "300px"> </img>
+        <p style="text-align:center; font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:0.5rem; font-weight:700; letter-spacing:2px; text-transform:uppercase;">RIO DE JANEIRO — Cenário Principal</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARACTERS -->
+<section id="personagens">
+  <div class="chars-header reveal">
+    <span class="section-label">🎭 Elenco de Pilotos</span>
+    <h2 class="section-title">Escolha Seu Campeão</h2>
+    <p class="section-desc" style="margin: 0 auto; text-align:center;">
+      Cada personagem tem varías pistas de seu aplícativo como do "Mario Kart Tour".
+    </p>
+  </div>
+  <div class="chars-grid">
+    <!-- Pauline: -->
+    <div class="char-card reveal"
+         style="--char-color: var(--rosa); --card-accent: rgba(255,45,120,0.4); --char-glow: rgba(255,45,120,0.2);">
+      <div class="char-art">
+        <div class="char-bg-glow" style="background: radial-gradient(circle, #FF2D78 0%, transparent 70%);"></div>
+        <div class="char-emoji">💃</div>
+      </div>
+      <div class="char-info">
+        <div class="char-name" style="color: var(--rosa);"></div>
+        <div class="char-role" style="color: var(--rosa);">Pauline-Rainha do Carnaval</div>
+        <p class="char-desc">significaria uma versão festiva e temática da personagem, celebrando o carnaval com roupas luxuosas e energia de desfile dentro de Mario Kart Tour..</p>
+        <div class="char-stats-bar">
+          <div class="stat-row"><span>Veloc.</span><div class="stat-fill-bg"><div class="stat-fill" data-width="90"></div></div></div>
+          <div class="stat-row"><span>Giro</span><div class="stat-fill-bg"><div class="stat-fill" data-width="85"></div></div></div>
+          <div class="stat-row"><span>Item</span><div class="stat-fill-bg"><div class="stat-fill" data-width="95"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- Mario: -->
+    <div class="char-card reveal"
+         style="--char-color: var(--verde); --card-accent: rgba(0,200,83,0.4); --char-glow: rgba(0,200,83,0.2);">
+      <div class="char-art">
+        <div class="char-bg-glow" style="background: radial-gradient(circle, #00C853 0%, transparent 70%);"></div>
+        <div class="char-emoji">⚽</div>
+      </div>
+      <div class="char-info">
+        <div class="char-name" style="color: var(--verde);">Mario de Seleção</div>
+        <div class="char-role" style="color: var(--verde);">significaria Mario vestido com o uniforme do Brasil, como uma versão especial inspirada no futebol brasileiro.</div>
+        <p class="char-desc">.</p>
+        <div class="char-stats-bar">
+          <div class="stat-row"><span>Veloc.</span><div class="stat-fill-bg"><div class="stat-fill" data-width="78"></div></div></div>
+          <div class="stat-row"><span>Giro</span><div class="stat-fill-bg"><div class="stat-fill" data-width="98"></div></div></div>
+          <div class="stat-row"><span>Item</span><div class="stat-fill-bg"><div class="stat-fill" data-width="70"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- Daísy -->
+    <div class="char-card reveal"
+         style="--char-color: var(--azul); --card-accent: rgba(0,87,183,0.4); --char-glow: rgba(0,87,183,0.25);">
+      <div class="char-art">
+        <div class="char-bg-glow" style="background: radial-gradient(circle, #0057B7 0%, transparent 70%);"></div>
+        <div class="char-emoji">💃</div>
+      </div>
+      <div class="char-info">
+        <div class="char-name" style="color: #4DA6FF;">Daisy</div>
+        <div class="char-role" style="color: #4DA6FF;">A Carmen Miranda</div>
+        <p class="char-desc">significaria uma versão da Daisy com roupas tropicais e chapéu de frutas, inspirada na artista brasileira Carmen Miranda, trazendo um estilo alegre e colorido ao jogo..</p>
+        <div class="char-stats-bar">
+          <div class="stat-row"><span>Veloc.</span><div class="stat-fill-bg"><div class="stat-fill" data-width="88"></div></div></div>
+          <div class="stat-row"><span>Giro</span><div class="stat-fill-bg"><div class="stat-fill" data-width="72"></div></div></div>
+          <div class="stat-row"><span>Item</span><div class="stat-fill-bg"><div class="stat-fill" data-width="80"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- Yoshi -->
+    <div class="char-card reveal"
+         style="--char-color: var(--amarelo); --card-accent: rgba(255,214,0,0.4); --char-glow: rgba(255,214,0,0.2);">
+      <div class="char-art">
+        <div class="char-bg-glow" style="background: radial-gradient(circle, #FFD600 0%, transparent 70%);"></div>
+        <div class="char-emoji">🐉</div>
+      </div>
+      <div class="char-info">
+        <div class="char-name" style="color: var(--amarelo);">Yoshi</div>
+        <div class="char-role" style="color: var(--amarelo);">Dos tropícais</div>
+        <p class="char-desc">O seria uma versão temática do Yoshi inspirada em lugares tropicais, com cores vivas e elementos de natureza..</p>
+        <div class="char-stats-bar">
+          <div class="stat-row"><span>Veloc.</span><div class="stat-fill-bg"><div class="stat-fill" data-width="83"></div></div></div>
+          <div class="stat-row"><span>Giro</span><div class="stat-fill-bg"><div class="stat-fill" data-width="76"></div></div></div>
+          <div class="stat-row"><span>Item</span><div class="stat-fill-bg"><div class="stat-fill" data-width="99"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- Waluigi -->
+    <div class="char-card reveal"
+         style="--char-color: var(--laranja); --card-accent: rgba(255,109,0,0.4); --char-glow: rgba(255,109,0,0.2);">
+      <div class="char-art">
+        <div class="char-bg-glow" style="background: radial-gradient(circle, #FF6D00 0%, transparent 70%);"></div>
+        <div class="char-emoji">🤸‍</div>
+      </div>
+      <div class="char-info">
+        <div class="char-name" style="color: var(--laranja);">Waluigi</div>
+        <div class="char-role" style="color: var(--laranja);">Capoeirista</div>
+        <p class="char-desc">significaria uma versão do Waluigi inspirada na capoeira, mostrando movimentos de luta e dança típicos do Brasil..</p>
+        <div class="char-stats-bar">
+          <div class="stat-row"><span>Veloc.</span><div class="stat-fill-bg"><div class="stat-fill" data-width="74"></div></div></div>
+          <div class="stat-row"><span>Giro</span><div class="stat-fill-bg"><div class="stat-fill" data-width="90"></div></div></div>
+          <div class="stat-row"><span>Item</span><div class="stat-fill-bg"><div class="stat-fill" data-width="88"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- Cara-Tímido: -->
+    <div class="char-card reveal"
+         style="--char-color: var(--roxo); --card-accent: rgba(123,47,190,0.4); --char-glow: rgba(123,47,190,0.25);">
+      <div class="char-art">
+        <div class="char-bg-glow" style="background: radial-gradient(circle, #7B2FBE 0%, transparent 70%);"></div>
+        <div class="char-emoji">🎭</div>
+      </div>
+      <div class="char-info">
+        <div class="char-name" style="color: #B44FFF;">Cara-Tímido</div>
+        <div class="char-role" style="color: #B44FFF;">De Mascará!...</div>
+        <p class="char-desc">com uma máscara inspirada no carnaval brasileiro, cheia de cores e estilo festivo.</p>
+        <div class="char-stats-bar">
+          <div class="stat-row"><span>Veloc.</span><div class="stat-fill-bg"><div class="stat-fill" data-width="95"></div></div></div>
+          <div class="stat-row"><span>Giro</span><div class="stat-fill-bg"><div class="stat-fill" data-width="94"></div></div></div>
+          <div class="stat-row"><span>Item</span><div class="stat-fill-bg"><div class="stat-fill" data-width="65"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ITEMS -->
+<div class="items-section">
+  <div class="items-header reveal">
+    <span class="section-label">⚡ Arsenal</span>
+    <h2 class="section-title">Itens da Corrida</h2>
+  </div>
+  <div style="overflow: hidden;">
+    <div class="items-scroll-container" id="itemsScroll">
+      <div class="item-block"><div class="item-emoji">🍌</div><div class="item-name">Triplos ou Banana Gígante</div></div>
+      <div class="item-block"><div class="item-emoji">🐢</div><div class="item-name">Green Shell or Triple Shell</div></div>
+      <div class="item-block"><div class="item-emoji">🐌</div><div class="item-name">Red Shell or Triple Shell</div></div>
+      <div class="item-block"><div class="item-emoji">☄</div><div class="item-name">Spíny Shell</div></div>
+      <div class="item-block"><div class="item-emoji">🐲</div><div class="item-name">Bowser's Shell</div></div>
+      <div class="item-block"><div class="item-emoji">🧨</div><div class="item-name">Bob-Omb</div></div>
+      <div class="item-block"><div class="item-emoji">🧨🧨</div><div class="item-name">Double Bob-Omb</div></div>
+      <div class="item-block"><div class="item-emoji">⚡</div><div class="item-name">Relâmpago</div></div>
+      <div class="item-block"><div class="item-emoji">🍄</div><div class="item-name">Cogumelo ou Cogumelo Triplo</div></div>
+      <div class="item-block"><div class="item-emoji">🍄🍄</div><div class="item-name">Mega Cogucmelo</div></div>
+       <div class="item-block"><div class="item-emoji">🔫</div><div class="item-name">Bullet Bill</div></div>
+      <div class="item-block"><div class="item-emoji">🦑</div><div class="item-name">Lula de Tinta</div></div>
+      <div class="item-block"><div class="item-emoji">🌷</div><div class="item-name">Flor de fogo</div></div>
+      <div class="item-block"><div class="item-emoji">🌾</div><div class="item-name">Flor de bumerang</div></div>
+      <div class="item-block"><div class="item-emoji">🌼</div><div class="item-name">Flor de Gelo</div></div>
+      <div class="item-block"><div class="item-emoji">📣</div><div class="item-name">Super Buzina</div></div>
+      <div class="item-block"><div class="item-emoji">💰</div><div class="item-name">Moeda</div></div>
+      <div class="item-block"><div class="item-emoji">❤</div><div class="item-name">Coração</div></div>
+      <div class="item-block"><div class="item-emoji">🥚</div><div class="item-name">Ovo do Yoshi</div></div>
+      <div class="item-block"><div class="item-emoji">🔯</div><div class="item-name">Super estrela</div></div>
+      <div class="item-block"><div class="item-emoji">7</div><div class="item-name">Os setes sortudos</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRACKS -->
+<section id="pistas">
+  <div class="tracks-header reveal">
+    <span class="section-label" style="color: var(--azul);">🗺️ Circuitos</span>
+    <h2 class="section-title">Pistas do Rio</h2>
+    <p class="section-desc">12 pistas únicas inspiradas nos pontos mais icônicos da cidade maravilhosa.</p>
+  </div>
+  <div class="tracks-scroll">
+    <!-- Track 1 -->
+    <div class="track-card reveal">
+      <div class="track-visual">
+        <div class="track-bg" style="background: linear-gradient(135deg, #1A4D1A, #2E7D32, #1B5E20);"></div>
+        <div class="track-icon">🏔</div>
+        <div class="track-difficulty" style="color: #FF5252;">🔥 Expert</div>
+        <div class="track-cups">🥇🥈🥉</div>
+      </div>
+      <div class="track-info">
+        <div class="track-name">Rio carnaval Lap 1</div>
+        <div class="track-location">⛰Que é inspirado pelo "Rio de Janeiro".</div>
+        <p class="track-desc">É uma referência ao famoso festival da cidade de Rio de Janeiro, no Brasil. — literalmente.</p>
+        <div class="track-tags">
+          
+        </div>
+      </div>
+    </div>
+    <!-- Track 2 -->
+    <div class="track-card reveal">
+      <div class="track-visual">
+        <div class="track-bg" style="background: linear-gradient(135deg, #0057B7, #1E88E5, #0D47A1);"></div>
+        <div class="track-icon">🍃</div>
+        <div class="track-difficulty" style="color: #69F0AE;">⚡ Normal</div>
+        <div class="track-cups">🥇🥈🥉</div>
+      </div>
+      <div class="track-info">
+        <div class="track-name">Piranha Plant Pipeline R/X</div>
+        <div class="track-location">Piranha Plant Pipeline.</div>
+        <p class="track-desc">Uma pista cheia de canos subterrâneos onde vivem as plantas carnívoras do Mario.</p>
+        <div class="track-tags">
+       
+        </div>
+      </div>
+    </div>
+    <!-- Track 3 -->
+    <div class="track-card reveal">
+      <div class="track-visual">
+        <div class="track-bg" style="background: linear-gradient(135deg, #4A148C, #7B1FA2, #9C27B0);"></div>
+        <div class="track-icon">🌉</div>
+        <div class="track-difficulty" style="color: #FFD600;">⭐ Iniciante</div>
+        <div class="track-cups">🥇🥈🥉</div>
+      </div>
+      <div class="track-info">
+        <div class="track-name">Sdyney Sprínt lap 3</div>
+        <div class="track-location">🌉</div>
+        <p class="track-desc">Sydney Sprint significa uma corrida de Mario Kart inspirada na cidade de Sydney e em seus pontos turísticos famosos.</p>
+        <div class="track-tags">
+          <span class="tag" style="color: var(--rosa);">Carnaval</span>
+          <span class="tag" style="color: var(--roxo);">Noturna</span>
+          <span class="tag" style="color: var(--amarelo);">Confete</span>
+        </div>
+      </div>
+    </div>
+    <!-- Track 4 -->
+    <div class="track-card reveal">
+      <div class="track-visual">
+        <div class="track-bg" style="background: linear-gradient(135deg, #B71C1C, #E53935, #C62828);"></div>
+        <div class="track-icon">🏖</div>
+        <div class="track-difficulty" style="color: #FF5252;">🔥 Expert</div>
+        <div class="track-cups">🥇🥈🥉</div>
+      </div>
+      <div class="track-info">
+        <div class="track-name">Los angeles Laps(Challenge)</div>
+        <div class="track-location">🏖</div>
+        <p class="track-desc">ovavelmente é um jogo ou atividade onde a pessoa precisa completar voltas (laps) enquanto participa de um desafio envolvendo balões (por exemplo: correr com um balão sem deixar cair, equilibrar, etc.).</p>
+        <div class="track-tags">
+          <span class="tag" style="color: #FF5252;">Veloz</span>
+          <span class="tag" style="color: var(--verde);">Grama</span>
+          <span class="tag" style="color: var(--amarelo);">Barulho da Torcida</span>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- GAMEPLAY -->
+<section id="gameplay">
+  <div class="gameplay-grid">
+    <div class="gameplay-header reveal">
+      <span class="section-label" style="color: var(--laranja);">🎮 Mecânicas</span>
+      <h2 class="section-title">Jogue do Seu Jeito</h2>
+      <p class="section-desc">Combine velocidade, estratégia e a malícia carioca para vencer cada corrida.</p>
+      <div class="gameplay-features">
+        <div class="gf-item" style="--item-color: var(--amarelo);">
+          <div class="gf-icon">🪂</div>
+          <div class="gf-text">
+            <h3>Paraquedas Carioca</h3>
+            <p>Planei entre as pistas em transição usando paraquedas estilizados com as cores do Brasil para pousar na posição ideal.</p>
+          </div>
+        </div>
+        <div class="gf-item" style="--item-color: var(--rosa);">
+          <div class="gf-icon">🏆</div>
+          <div class="gf-text">
+            <h3>Sistema de Copas</h3>
+            <p>Dispute a Copa Carnaval, Copa Verde-Amarela e Copa Carioca. Desbloqueie recompensas exclusivas a cada temporada.</p>
+          </div>
+        </div>
+        <div class="gf-item" style="--item-color: var(--verde);">
+          <div class="gf-icon">🛞</div>
+          <div class="gf-text">
+            <h3>Karts Customizáveis</h3>
+            <p>Mais de 30 karts para desbloquear, de bonde da Lapa a barco de pesca motorizado. Personalize tudo!</p>
+          </div>
+        </div>
+        <div class="gf-item" style="--item-color: var(--azul);">
+          <div class="gf-icon">⚡</div>
+          <div class="gf-text">
+            <h3>Itens Especiais</h3>
+            <p>10 itens únicos inspirados na cultura brasileira. Desde a Caipirinha Turbo até o Papagaio Torpedeiro!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-mockup reveal">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="game-screen-content">
+            <!-- Speed lines -->
+            <div class="speed-lines">
+              <div class="speed-line" style="top: 30%; width: 60%; animation-delay: 0s;"></div>
+              <div class="speed-line" style="top: 50%; width: 80%; animation-delay: 0.2s;"></div>
+              <div class="speed-line" style="top: 70%; width: 40%; animation-delay: 0.4s;"></div>
+            </div>
+            <!-- Cristo silhouette -->
+            <div class="christ-silhouette">✝️</div>
+            <!-- HUD -->
+            <div class="game-position-badge">1º LUGAR</div>
+            <div class="game-score">
+              <div style="color: var(--amarelo); font-family:'Bangers',cursive; font-size:1rem;">⭐ 4800</div>
+              <div style="color:rgba(255,255,255,0.5); font-size:0.6rem;">VLT: LAP 2/3</div>
+            </div>
+            <!-- Road -->
+            <div class="game-road"></div>
+            <div class="game-road-line"></div>
+            <!-- Kart -->
+            <div class="game-kart-icon">🏎️</div>
+            <!-- Items bar -->
+            <div class="game-items-bar">
+              <div class="item-slot">🎭</div>
+              <div class="item-slot" style="border-color: var(--amarelo); box-shadow: 0 0 10px var(--amarelo);">🦜</div>
+              <div class="item-slot">🥥</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Glow behind phone -->
+      <div style="
+        position: absolute;
+        bottom: -30px;
+        width: 200px;
+        height: 40px;
+        background: radial-gradient(ellipse, rgba(255,214,0,0.3) 0%, transparent 70%);
+        filter: blur(10px);
+        pointer-events: none;
+      "></div>
+    </div>
+  </div>
+</section>
+<!-- CONTACT -->
+<section id="contato">
+  <div class="contact-bg-decoration"></div>
+  <div class="contact-content">
+    <span class="section-label" style="color: var(--verde);">📨 Fale Conosco</span>
+    <h2 class="section-title reveal">Quer Fazer Parte do RioKart?</h2>
+    <p class="section-desc reveal" style="margin: 0 auto; text-align: center;">
+      Parceria, imprensa, sugestões de pistas ou apenas quer dizer que ama o jogo — fale com a gente!
+    </p>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Seu Nome</label>
+          <input type="text" placeholder="Como te chamam?">
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="seu@email.com.br">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Assunto</label>
+        <select>
+          <option>🎮 Sugestão de Gameplay</option>
+          <option>🗺️ Ideia de Nova Pista</option>
+          <option>🤝 Parceria Comercial</option>
+          <option>📰 Imprensa & Mídia</option>
+          <option>🐛 Reportar Bug</option>
+          <option>💬 Feedback Geral</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mensagem</label>
+        <textarea placeholder="Conta tudo pra gente! Quanto mais detalhe, melhor 🏁"></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit(this)">🚀 Enviar Mensagem</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">Rio<span>Kart</span>🏁</div>
+      <p class="footer-desc">
+        O jogo de corrida mais brasileiro do mundo. Feito com amor, bagunça e muito samba para você, Brasil.
+      </p>
+      <div class="social-links" style="margin-top: 1.5rem;">
+        <div class="social-link">📘</div>
+        <div class="social-link">📸</div>
+        <div class="social-link">🐦</div>
+        <div class="social-link">▶️</div>
+        <div class="social-link">💬</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Jogo</h4>
+      <ul>
+        <li><a href="#sobre">Sobre o RioKart</a></li>
+        <li><a href="#personagens">Personagens</a></li>
+        <li><a href="#pistas">Pistas</a></li>
+        <li><a href="#gameplay">Gameplay</a></li>
+        <li><a href="#dlc">DLCs</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Suporte</h4>
+      <ul>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Central de Ajuda</a></li>
+        <li><a href="#">Reportar Bug</a></li>
+        <li><a href="#">Comunidade</a></li>
+        <li><a href="#">Atualizações</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Política de Privacidade</a></li>
+        <li><a href="#">Termos de Uso</a></li>
+        <li><a href="#">Cookies</a></li>
+        <li><a href="#">LGPD</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 RioKart Studios. Todos os direitos reservados. Feito 🇧🇷 no Brasil.</p>
+    <div style="display:flex; gap:1rem;">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 40'%3E%3Crect width='120' height='40' rx='8' fill='%23111'/%3E%3Ctext x='60' y='26' text-anchor='middle' fill='white' font-size='12' font-family='Arial'%3EApp Store%3C/text%3E%3C/svg%3E" alt="App Store" style="height:36px; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 40'%3E%3Crect width='120' height='40' rx='8' fill='%23111'/%3E%3Ctext x='60' y='26' text-anchor='middle' fill='white' font-size='12' font-family='Arial'%3EGoogle Play%3C/text%3E%3C/svg%3E" alt="Google Play" style="height:36px; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
+    </div>
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0;
+let ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
+});
+
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  cursorRing.style.left = ringX + 'px';
+  cursorRing.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .char-card, .track-card, .dlc-card').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.transform = 'translate(-50%, -50%) scale(1.8)';
+    cursor.style.background = 'var(--rosa)';
+    cursor.style.boxShadow = '0 0 20px var(--rosa)';
+    cursorRing.style.transform = 'translate(-50%, -50%) scale(1.5)';
+    cursorRing.style.borderColor = 'rgba(255,45,120,0.5)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    cursor.style.background = 'var(--amarelo)';
+    cursor.style.boxShadow = '0 0 12px var(--amarelo)';
+    cursorRing.style.transform = 'translate(-50%, -50%) scale(1)';
+    cursorRing.style.borderColor = 'rgba(255,214,0,0.4)';
+  });
+});
+
+// Confetti
+const confettiColors = ['#FF2D78','#FFD600','#00C853','#0057B7','#FF6D00','#7B2FBE','#FFFFFF'];
+const container = document.getElementById('confettiContainer');
+
+function createConfetti() {
+  const piece = document.createElement('div');
+  piece.className = 'confetti-piece';
+  const color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+  const left = Math.random() * 100;
+  const duration = 4 + Math.random() * 6;
+  const delay = Math.random() * 8;
+  const size = 6 + Math.random() * 10;
+  const rotation = Math.random() * 360;
+  piece.style.cssText = `
+    left: ${left}%;
+    width: ${size}px;
+    height: ${size * 1.5}px;
+    background: ${color};
+    border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+    animation-duration: ${duration}s;
+    animation-delay: ${delay}s;
+    transform: rotate(${rotation}deg);
+    opacity: 0;
+  `;
+  container.appendChild(piece);
+  setTimeout(() => {
+    if (container.contains(piece)) container.removeChild(piece);
+  }, (duration + delay) * 1000);
+}
+
+for (let i = 0; i < 60; i++) createConfetti();
+setInterval(createConfetti, 300);
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, idx) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, idx * 60);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+revealEls.forEach(el => observer.observe(el));
+
+// Stat bars animation
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const fills = entry.target.querySelectorAll('.stat-fill');
+      fills.forEach(fill => {
+        const width = fill.getAttribute('data-width');
+        setTimeout(() => {
+          fill.style.width = width + '%';
+        }, 300);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.char-card').forEach(card => statObserver.observe(card));
+
+// Nav active state
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.style.color = '';
+        link.style.textShadow = '';
+      });
+      const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+      if (active && !active.classList.contains('nav-cta')) {
+        active.style.color = 'var(--amarelo)';
+        active.style.textShadow = '0 0 12px var(--amarelo)';
+      }
+    }
+  });
+}, { threshold: 0.5 });
+
+sections.forEach(s => navObserver.observe(s));
+
+// Form submit
+function handleSubmit(btn) {
+  const orig = btn.innerHTML;
+  btn.innerHTML = '✅ Mensagem Enviada! Valeu, mano!';
+  btn.style.background = 'linear-gradient(135deg, var(--verde), #00A849)';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = orig;
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 3500);
+}
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 50) {
+    nav.style.background = 'rgba(8, 11, 20, 0.97)';
+    nav.style.borderBottomColor = 'rgba(255, 214, 0, 0.35)';
+  } else {
+    nav.style.background = 'rgba(8, 11, 20, 0.85)';
+    nav.style.borderBottomColor = 'rgba(255, 214, 0, 0.2)';
+  }
+});
+
+// Parallax hero
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg) {
+    heroBg.style.transform = `translateY(${scrollY * 0.3}px)`;
+  }
+});
+</script>
+</body>
+</html>
